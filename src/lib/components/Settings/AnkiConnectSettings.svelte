@@ -21,6 +21,7 @@
 
   // Basic settings
   let url = $state($settings.ankiConnectSettings.url);
+  let apiKey = $state($settings.ankiConnectSettings.apiKey);
 
   // Card settings
   let cardMode = $state($settings.ankiConnectSettings.cardMode);
@@ -128,6 +129,19 @@
           }}
           class="flex-1"
         />
+        <Input
+          type="text"
+          placeholder="API key"
+          bind:value={apiKey}
+          onchange={() => {
+            if (apiKey === '') {
+              apiKey = null;
+            }
+            updateAnkiSetting('apiKey', apiKey);
+          }}
+          class="flex-1"
+        />
+
         {#if isConnected}
           <Button
             size="sm"

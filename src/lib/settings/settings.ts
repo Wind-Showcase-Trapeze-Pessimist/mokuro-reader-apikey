@@ -60,7 +60,7 @@ export type AnkiConnectSettings = {
   enabled: boolean; // User can explicitly disable even when connected
   connectionData: AnkiConnectionData | null; // Cached from last successful connection
   androidModeOverride?: 'auto' | 'android' | 'desktop'; // Override auto-detection
-  apiKey: string // API key to ankiconnect
+  apiKey: string; // API key to ankiconnect
 
   // Current selection
   selectedModel: string; // Currently active model

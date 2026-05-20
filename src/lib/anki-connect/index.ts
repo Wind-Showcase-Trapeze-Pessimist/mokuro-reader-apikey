@@ -296,8 +296,8 @@ async function ankiConnectRaw(
   action: string,
   params: Record<string, any>
 ): Promise<any> {
-  const key=get(settings).ankiConnectSettings.key
-  
+  const key = get(settings).ankiConnectSettings.apiKey;
+
   try {
     const res = await fetch(url, {
       method: 'POST',
@@ -478,7 +478,7 @@ async function requestAnkiPermission(url: string): Promise<boolean> {
  */
 export async function testConnection(testUrl?: string): Promise<ConnectionTestResult> {
   const url = testUrl || get(settings).ankiConnectSettings.url || 'http://127.0.0.1:8765';
-  const key=get(settings).ankiConnectSettings.key
+  const key = get(settings).ankiConnectSettings.apiKey;
 
   try {
     const res = await fetch(url, {
@@ -546,7 +546,7 @@ export async function ankiConnect(
   options?: { silent?: boolean; retried?: boolean }
 ) {
   const url = get(settings).ankiConnectSettings.url || 'http://127.0.0.1:8765';
-  const key=get(settings).ankiConnectSettings.key
+  const key = get(settings).ankiConnectSettings.apiKey;
 
   try {
     const res = await fetch(url, {
