@@ -296,10 +296,12 @@ async function ankiConnectRaw(
   action: string,
   params: Record<string, any>
 ): Promise<any> {
+  const key=get(settings).ankiConnectSettings.key
+  
   try {
     const res = await fetch(url, {
       method: 'POST',
-      body: JSON.stringify({ action, params, version: 6 })
+      body: JSON.stringify({ action, params, version: 6, key })
     });
     const json = await res.json();
     if (json.error) {
@@ -476,11 +478,12 @@ async function requestAnkiPermission(url: string): Promise<boolean> {
  */
 export async function testConnection(testUrl?: string): Promise<ConnectionTestResult> {
   const url = testUrl || get(settings).ankiConnectSettings.url || 'http://127.0.0.1:8765';
+  const key=get(settings).ankiConnectSettings.key
 
   try {
     const res = await fetch(url, {
       method: 'POST',
-      body: JSON.stringify({ action: 'version', version: 6 })
+      body: JSON.stringify({ action: 'version', version: 6, key })
     });
 
     const json = await res.json();
@@ -543,11 +546,12 @@ export async function ankiConnect(
   options?: { silent?: boolean; retried?: boolean }
 ) {
   const url = get(settings).ankiConnectSettings.url || 'http://127.0.0.1:8765';
+  const key=get(settings).ankiConnectSettings.key
 
   try {
     const res = await fetch(url, {
       method: 'POST',
-      body: JSON.stringify({ action, params, version: 6 })
+      body: JSON.stringify({ action, params, version: 6, key })
     });
     const json = await res.json();
 
