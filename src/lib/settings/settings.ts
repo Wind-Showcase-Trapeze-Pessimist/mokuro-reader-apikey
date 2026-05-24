@@ -403,6 +403,7 @@ export function migrateProfiles(profiles: Profiles): Profiles {
       url: oldAnki.url || defaultSettings.ankiConnectSettings.url,
       enabled: oldAnki.enabled ?? defaultSettings.ankiConnectSettings.enabled,
       connectionData: oldAnki.connectionData || null, // Requires reconnect after migration
+      apiKey: oldAnki.apiKey,
       androidModeOverride: oldAnki.androidModeOverride || 'auto',
       // Migrate model settings - preserve both create and update configs
       selectedModel: oldAnki.selectedModel || oldAnki.modelName || '',
